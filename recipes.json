@@ -1,0 +1,152 @@
+[
+    {
+        "name": "hamburger",
+        "ingredients": ["hamburger bun", "ground beef", "lettuce", "tomato", "cheese", "mayonnaise"],
+        "instructions": "Cook the beef on the grill, place it in the bun and add the ingredients to taste.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "hot dog",
+        "ingredients": ["hot dog bun", "sausage", "mustard", "ketchup", "shredded cabbage"],
+        "instructions": "Cook the sausage and place it in the bun, add mustard, ketchup, and shredded cabbage.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "apple pie",
+        "ingredients": ["apples", "flour", "sugar", "butter", "cinnamon"],
+        "instructions": "Prepare the dough, fill with apples, sugar, and cinnamon, and bake until golden.",
+        "category": "breakfast"
+    },
+    {
+        "name": "mac and cheese",
+        "ingredients": ["pasta", "cheddar cheese", "milk", "butter", "flour"],
+        "instructions": "Cook the pasta, make a sauce with butter, milk, and cheese, and mix with the pasta.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "buffalo wings",
+        "ingredients": ["chicken wings", "hot sauce", "butter", "garlic", "vinegar"],
+        "instructions": "Fry the wings and coat them with a mixture of hot sauce, butter, garlic, and vinegar.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "clam chowder",
+        "ingredients": ["clams", "cream", "leek", "potatoes", "bacon"],
+        "instructions": "Cook the clams with the potatoes and leek, add cream and crispy bacon.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "chicken fried steak",
+        "ingredients": ["beef steak", "flour", "egg", "bread crumbs", "white gravy"],
+        "instructions": "Coat the steak, fry it, and cover with creamy white gravy.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "cheeseburger",
+        "ingredients": ["hamburger bun", "ground beef", "cheddar cheese", "lettuce", "tomato"],
+        "instructions": "Cook the beef, add cheese on top, and place it in the bun with the vegetables.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "pulled pork sandwich",
+        "ingredients": ["shredded pork", "hamburger bun", "barbecue sauce", "coleslaw"],
+        "instructions": "Slow-cook the pork, shred it, and serve with barbecue sauce and coleslaw in a bun.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "BLT",
+        "ingredients": ["bread", "bacon", "lettuce", "tomato", "mayonnaise"],
+        "instructions": "Toast the bread, add crispy bacon, lettuce, tomato, and mayonnaise.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "key lime pie",
+        "ingredients": ["lime juice", "sweetened condensed milk", "egg yolks", "graham crackers", "butter"],
+        "instructions": "Prepare a crust with graham crackers and butter, then add the lime juice and condensed milk mixture, and bake.",
+        "category": "breakfast"
+    },
+    {
+        "name": "cornbread",
+        "ingredients": ["cornmeal", "milk", "egg", "butter", "sugar"],
+        "instructions": "Mix the ingredients and bake until golden.",
+        "category": "breakfast"
+    },
+    {
+        "name": "chocolate chip cookies",
+        "ingredients": ["flour", "chocolate chips", "sugar", "butter", "egg"],
+        "instructions": "Mix all ingredients, form dough balls, and bake until golden.",
+        "category": "breakfast"
+    },
+    {
+        "name": "pancakes",
+        "ingredients": ["flour", "milk", "egg", "sugar", "baking powder"],
+        "instructions": "Mix the ingredients and cook on a griddle until golden brown on both sides.",
+        "category": "breakfast"
+    },
+    {
+        "name": "sloppy joes",
+        "ingredients": ["ground beef", "barbecue sauce", "hamburger bun", "bell pepper", "onion"],
+        "instructions": "Cook the beef with bell pepper and onion, add barbecue sauce, and serve on buns.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "chili con carne",
+        "ingredients": ["ground beef", "beans", "tomatoes", "chili powder", "onion"],
+        "instructions": "Cook the beef with onion, add beans, tomatoes, and chili, and simmer.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "potato salad",
+        "ingredients": ["potatoes", "mayonnaise", "hard-boiled eggs", "mustard", "pickle"],
+        "instructions": "Boil the potatoes, mix with other ingredients, and refrigerate.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "tater tots",
+        "ingredients": ["potatoes", "flour", "salt", "oil"],
+        "instructions": "Shape the potatoes into small cylinders and fry until golden.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "steak and potatoes",
+        "ingredients": ["beef steak", "potatoes", "butter", "rosemary", "salt"],
+        "instructions": "Grill the steak and serve with roasted potatoes.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "s'mores",
+        "ingredients": ["graham crackers", "chocolate", "marshmallows"],
+        "instructions": "Place a marshmallow and a piece of chocolate between two graham crackers and heat.",
+        "category": "breakfast"
+    },
+    {
+        "name": "french toast",
+        "ingredients": ["bread", "egg", "milk", "cinnamon", "sugar"],
+        "instructions": "Dip the bread in the egg and milk mixture, and fry until golden.",
+        "category": "breakfast"
+    },
+    {
+        "name": "biscuits and gravy",
+        "ingredients": ["biscuits", "gravy", "sausage", "milk"],
+        "instructions": "Bake the biscuits and cover with sausage gravy.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "caesar salad",
+        "ingredients": ["lettuce", "grilled chicken", "Caesar dressing", "croutons", "parmesan cheese"],
+        "instructions": "Mix all the ingredients and serve.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "BBQ ribs",
+        "ingredients": ["pork ribs", "barbecue sauce", "salt", "pepper"],
+        "instructions": "Marinate the ribs in barbecue sauce, slow-cook until tender.",
+        "category": "lunch-dinner"
+    },
+    {
+        "name": "fried chicken",
+        "ingredients": ["chicken", "flour", "egg", "oil", "salt", "pepper"],
+        "instructions": "Coat the chicken with flour and egg, fry until golden.",
+        "category": "lunch-dinner"
+    }
+]
