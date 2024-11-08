@@ -3,6 +3,7 @@ import pyttsx3
 import json
 
 def initialize_engine():
+    """Initialize text-to-speech engine"""
     engine = pyttsx3.init()
     engine.setProperty('rate', 150)    
     engine.setProperty('volume', 0.9)  
@@ -53,7 +54,14 @@ def load_recipes(filename):
     """Load recipes from JSON file"""
     try:
         with open(filename, 'r', encoding='utf-8') as file:
-            return json.load(file)
+            data = json.load(file)
+            if isinstance(data, list):
+                return data
+            elif isinstance(data, dict) and 'recipes' in data:
+                return data['recipes']
+            else:
+                print("Error: Unexpected JSON format")
+                return []
     except FileNotFoundError:
         print(f"Error: {filename} not found.")
         return []
@@ -69,17 +77,17 @@ def get_recipe(query, recipes):
     return None, "Sorry, I couldn't find a recipe matching your request.", ""
 
 def get_user_choice():
-    """Get user's choice between specific or suggested recipe"""
+    """Get user's choice between specific or recommended recipe"""
     while True:
-        speak(engine, "Would you like to cook a specific recipe or would you like a suggested recipe? Please say 'specific' or 'suggested'")
+        speak(engine, "Would you like to cook a specific recipe or would you like a recommended recipe? Please say 'specific' or 'recommended'")
         choice = listen()
         
         if 'specific' in choice:
             return 'specific'
-        elif 'suggested' in choice:
-            return 'suggested'
+        elif any(word in choice for word in ['recommend', 'recommended', 'recomended']):
+            return 'recommended'
         else:
-            speak(engine, "I didn't catch that. Please say either 'specific' or 'suggested'")
+            speak(engine, "I didn't catch that. Please say either 'specific' or 'recommended'")
 
 def repeat_recipe(engine, recipe_name, ingredients, instructions):
     """Handle recipe repetition in a loop until user says no"""
@@ -94,7 +102,7 @@ def repeat_recipe(engine, recipe_name, ingredients, instructions):
             speak(engine, "And here are the instructions:")
             speak(engine, instructions)
         elif 'no' in response:
-            speak(engine, "Have fun cooking! Good luck and goodbye!")
+            speak(engine, "Have fun cooking and goodbye!")
             return True 
         else:
             speak(engine, "I didn't understand. Please say 'yes' to repeat or 'no' to finish.")
@@ -127,9 +135,74 @@ def handle_specific_recipe(engine, recipes):
                 speak(engine, "Please try another recipe.")
     return False
 
-def handle_suggested_recipe(engine):
-    """Handle the suggested recipe flow"""
-    speak(engine, "The suggested recipe feature will be available soon. Please check back later!")
+def get_available_ingredients():
+    """Returns hardcoded ingredients available in the fridge"""
+    return {
+        "chicken breast", "ground beef", "eggs", "tuna",
+        "tomato", "onion", "garlic", "carrots", "potatoes",
+        "lettuce", "cucumber", "bell pepper", "mushrooms",
+        "hot dog bun", "sausage", "mustard", "ketchup", "shredded cabbage",
+        "milk", "butter", "cheese", "cream",
+        "rice", "pasta", "flour", "bread",
+        "olive oil", "salt", "pepper", "oregano",
+        "tomato sauce", "soy sauce"
+    }
+
+def find_possible_recipes(available_ingredients, recipes):
+    """Find recipes that can be made with available ingredients"""
+    possible_recipes = []
+    available_ingredients = {ingredient.lower() for ingredient in available_ingredients}
+    
+    for recipe in recipes:
+        recipe_ingredients = {ingredient.lower() for ingredient in recipe['ingredients']}
+        if recipe_ingredients.issubset(available_ingredients):
+            possible_recipes.append((
+                recipe['name'],
+                recipe['ingredients'],
+                recipe['instructions']
+            ))
+    return possible_recipes
+
+def handle_recomended_recipe(engine, recipes):
+    """Handle the recommended recipe flow"""
+    speak(engine, "Let me check what ingredients we have available in the kitchen.")
+    available_ingredients = get_available_ingredients()
+    
+    possible_recipes = find_possible_recipes(available_ingredients, recipes)
+    
+    if not possible_recipes:
+        speak(engine, "I'm sorry, but I couldn't find any recipes that match your available ingredients.")
+        return False
+    
+    speak(engine, f"Great! I found {len(possible_recipes)} recipes you can make with your available ingredients.")
+    speak(engine, "Here are the options:")
+    
+    for i, (recipe_name, _, _) in enumerate(possible_recipes, 1):
+        speak(engine, f"Option {i}: {recipe_name}")
+    
+    speak(engine, "Which recipe would you like to prepare? Please say the name of the recipe.")
+    
+    while True:
+        choice = listen()
+        
+        if choice in ["exit", "quit", "goodbye", "bye"]:
+            speak(engine, "Goodbye! Happy cooking!")
+            return True
+        
+        for recipe_name, ingredients, instructions in possible_recipes:
+            if choice.lower() in recipe_name.lower():
+                speak(engine, f"Excellent choice! Let's prepare {recipe_name}")
+                speak(engine, "Here are all the ingredients you'll need:")
+                speak(engine, ", ".join(ingredients))
+                speak(engine, "And here are the instructions:")
+                speak(engine, instructions)
+                
+                should_exit = repeat_recipe(engine, recipe_name, ingredients, instructions)
+                if should_exit:
+                    return True
+                
+        speak(engine, "I'm sorry, I couldn't understand which recipe you want. Please try again, or say 'exit' to quit.")
+    
     return False
 
 def main():
@@ -149,8 +222,8 @@ def main():
         
         if choice == 'specific':
             should_exit = handle_specific_recipe(engine, recipes)
-        elif choice == 'suggested':
-            should_exit = handle_suggested_recipe(engine)
+        elif choice == 'recommended':
+            should_exit = handle_recomended_recipe(engine, recipes)
             
         if should_exit:
             break
