@@ -142,6 +142,7 @@ def get_available_ingredients():
         "tomato", "onion", "garlic", "carrots", "potatoes",
         "lettuce", "cucumber", "bell pepper", "mushrooms",
         "hot dog bun", "sausage", "mustard", "ketchup", "shredded cabbage",
+        "hamburger bun", "ground beef", "cheddar cheese", "lettuce", "tomato",
         "milk", "butter", "cheese", "cream",
         "rice", "pasta", "flour", "bread",
         "olive oil", "salt", "pepper", "oregano",
